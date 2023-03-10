@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -12,7 +15,10 @@ import org.springframework.data.annotation.Id;
 public class UserDTO {
     @Id
     private int id;
-    private String name;
+    private String owner_name;
     private String address;
+    private String vehicle_model;
+    private String registration_number;
+
 
 }

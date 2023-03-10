@@ -4,9 +4,12 @@ import com.firstProject.first.dto.UserDTO;
 import com.firstProject.first.entity.User;
 import com.firstProject.first.repo.UserRepo;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service                                                  //used to denote a class that performs a specific service or function in a Spring Boot application.
 @Transactional                                            //specifies that an interface, class, or method must have transactional semantics
@@ -18,6 +21,20 @@ public class UserService {
     public UserDTO saveUser(UserDTO userDTO){
         userRepo.save(modelMapper.map(userDTO, User.class));
         return userDTO;
+    }
+    public List<UserDTO> getAllUsers(){
+        List<User>userList=userRepo.findAll();
+        return modelMapper.map(userList,new TypeToken<List<UserDTO>>(){}.getType());
+    }
+
+    public UserDTO updateUser(UserDTO userDTO){
+        userRepo.save(modelMapper.map(userDTO,User.class));
+        return userDTO;
+    }
+
+    public boolean deleteUser(UserDTO userDTO){
+        userRepo.delete(modelMapper.map(userDTO,User.class));
+        return true;
     }
 
 }
