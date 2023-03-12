@@ -45,8 +45,8 @@ public class UserService {
 
     //user id, address > user details
     //select * from user where id = 2 address = "kandy"
-    public UserDTO getUserByUserIDAndAddress(String userId,String address) {
-        User user = userRepo.getUserByUserIDAndAddress(userId,address);
+    public UserDTO getUserByUserIDAndAddress(String userID,String address) {
+        User user = userRepo.getUserByUserIDAndAddress(userID,address);
         return modelMapper.map(user, UserDTO.class);
     }
 
